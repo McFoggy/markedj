@@ -1,12 +1,9 @@
 package io.github.gitbucket.markedj;
 
+import static io.github.gitbucket.markedj.Resources.loadResourceAsString;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by takezoe on 15/09/19.
@@ -102,21 +99,6 @@ public class MarkedTest {
         {
             String result = Marked.marked(loadResourceAsString("table.md"), new Options());
             assertEquals(loadResourceAsString("table.html"), result);
-        }
-    }
-
-    private String loadResourceAsString(String path) throws IOException {
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
-        try {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            byte[] buf = new byte[1024 * 8];
-            int length = 0;
-            while((length = in.read(buf)) != -1){
-                out.write(buf, 0, length);
-            }
-            return new String(out.toByteArray(), "UTF-8");
-        } finally {
-            in.close();
         }
     }
 }

@@ -23,7 +23,8 @@ public class Grammer {
     public static String BLOCK_BLOCKQUOTE  = "^( *>[^\\n]+(\\n(?!" + DEF + ")[^\\n]+)*\\n*)+";
     public static String BLOCK_LIST        = "^( *)(" + BULLET + ") [\\s\\S]+?(?:" + HR + "|\\n+(?=" + DEF + ")|\\n{2,}(?! )(?!\\1" + BULLET + " )\\n*|\\s*$)";
     public static String BLOCK_DEF         = "^ *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +[\"(]([^\\n]+)[\")])? *(?:\\n+|$)";
-    public static String BLOCK_PARAGRAPH   = "^((?:[^\\n]+\\n?(?!" + BLOCK_HR + "|" + BLOCK_HEADING + "|" + BLOCK_LHEADING + "|" + BLOCK_BLOCKQUOTE + "|<" +TAG + "|" + BLOCK_DEF + "))+)\\n*";
+    public static String BLOCK_PARAGRAPH   = "^((?:[^\\n]+\\n?(?!" + BLOCK_LIST + "|" + BLOCK_HEADING + "|" + BLOCK_LHEADING + "|" + BLOCK_BLOCKQUOTE + "|<" +TAG + "|" + BLOCK_DEF + "|" + BLOCK_HR + "))+)\\n*";
+//    public static String BLOCK_PARAGRAPH   = "^((?:[^\\n]+\\n?(?!" + BLOCK_LIST + "))+)\\n*";
     public static String BLOCK_GFM_FENCES  = "^ *(`{3,}|~{3,})[ \\.]*(\\S+)? *\\n([\\s\\S]*?)\\s*\\1 *(?:\\n+|$)";
 
     public static Map<String, Rule> BLOCK_RULES = new HashMap<>();
